@@ -30,16 +30,22 @@ class MainApplication(tk.Frame):
     
         ##############################
         ### File Selection Frame setup
-        label_file = tk.Label(master=frame_file, text="File Address")
+        label_file = tk.Label(
+                            master=frame_file,
+                            text="File Address",
+                            foreground="black")
         
         self.file_addr = tk.StringVar()
         entry_file = tk.Entry(
                             master=frame_file,
                             width=50,
+                            foreground="black",
+                            background="white",
                             textvariable=self.file_addr)
 
         button_file = tk.Button(master=frame_file,
                                 text="...",
+                                foreground="black",
                                 command=lambda: self.tk_find_file(
                                                                 entry_file,
                                                                 self.file_addr))
@@ -55,8 +61,9 @@ class MainApplication(tk.Frame):
         ### Hash Calculation/Validation Frame
         label_hash_header = tk.Label(
                                     master=frame_hashes,
-                                    text="Expected Hashes",
-                                    font="Verdana 16 bold")
+                                    font="Verdana 16 bold",
+                                    foreground="black",
+                                    text="Expected Hashes")
         label_hash_header.grid(row=0, column=0, columnspan=3)
 
         # NOTE: To keep the code more flexible with supported hash types, a loop
@@ -67,13 +74,19 @@ class MainApplication(tk.Frame):
             textvar_entry_hash = StringVar()
             textvar_label_hashresult = StringVar(value="Waiting")
 
-            label_hash = tk.Label(master=frame_hashes, text=hash_type)
+            label_hash = tk.Label(
+                                master=frame_hashes,
+                                foreground="black",
+                                text=hash_type)
             entry_hash = tk.Entry(
-                                    master=frame_hashes,
-                                    width=50,
-                                    textvariable=textvar_entry_hash)
+                                master=frame_hashes,
+                                width=50,
+                                foreground="black",
+                                background="white",
+                                textvariable=textvar_entry_hash)
             label_hashresult = tk.Label(
                                     master=frame_hashes,
+                                    foreground="black",
                                     textvariable=textvar_label_hashresult)
 
             # NOTE: Layout setup
@@ -94,6 +107,7 @@ class MainApplication(tk.Frame):
         self.label_status = tk.Label(
                                     master=frame_action,
                                     font="Verdana 12 bold",
+                                    foreground="black",
                                     textvariable=self.textvar_status)
                 
         self.progressbar_status = ttk.Progressbar(
